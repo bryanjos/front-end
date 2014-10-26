@@ -1,8 +1,8 @@
 {
-  "name": "app-digitaltipjar-com",
+  "name": "front-end",
   "private": true,
   "version": "0.0.0",
-  "description": "Digital Tip Jar Front End",
+  "description": "Front End",
   "main": "server.js",
   "author": "Bryan Joseph <bryanjos@gmail.com>",
   "dependencies": {
