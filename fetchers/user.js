@@ -5,7 +5,6 @@ var _users = Immutable.Vector();
 
 module.exports = {
     name: 'user',
-    //At least one of the CRUD methods is required
     read: function(req, resource, params, config, callback) {
         callback(null, _users.toArray());
     },

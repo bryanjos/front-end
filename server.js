@@ -6,6 +6,7 @@ var http = require('http'),
     navigateAction = require('flux-router-component').navigateAction,
     React = require('react'),
     Application = require('./app'),
+    bodyParser = require('body-parser'),
     Fetcher = require('fetchr');
 
 var app = express();
@@ -14,6 +15,8 @@ expressState.extend(app);
 app.set('state namespace', 'App');
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/templates');
+
+app.use(bodyParser.json());
 
 Fetcher.registerFetcher(require('./fetchers/user'));
 app.use(Application.config.xhrPath, Fetcher.middleware());

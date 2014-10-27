@@ -5,11 +5,15 @@
 'use strict';
 
 var util = require('util'),
+    Fetcher = require('fetchr'),
     BaseStore = require('./BaseStore');
 
 function UserStore(context) {
     this.context = context;
     this.users = [];
+    this.fetcher = new Fetcher({
+        xhrPath: "/api"
+    });
 }
 
 UserStore.storeName = 'UserStore';
@@ -20,9 +24,11 @@ UserStore.handlers = {
 
 util.inherits(UserStore, BaseStore);
 
-UserStore.prototype.createUser = function(user) {
-    this.users.push(user);
-    this.emitChange();
+UserStore.prototype.createUser = function(user, callback) {
+    var self = this;
+    self.fetcher.create('user', user, self.context, function (err) {
+        self.emitChange();
+    });
 };
 
 UserStore.prototype.getAll = function () {

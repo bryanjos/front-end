@@ -14,8 +14,8 @@ Context.registerStore(UserStore);
 
 function App(options) {
     options = options || {};
-    var fetcher = options.fetcher,
-        initialState = options.initialState;
+    var fetcher = options.fetcher;
+    var initialState = options.initialState;
 
     this.context = new Context({
         routes: routes,
@@ -33,7 +33,6 @@ App.prototype.getComponent = function () {
 };
 
 module.exports = App;
-module.exports.Context = Context;
 module.exports.config = {
     xhrPath: '/api'
 }
